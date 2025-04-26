@@ -24,7 +24,7 @@ export default function Home() {
           <div className="flex flex-col items-center bg-blue-700 rounded-lg p-6 shadow-lg">
             <div className="text-4xl mb-4">⚡</div>
             <h3 className="text-xl font-semibold mb-2">Instant Response</h3>
-            <p className="text-center">Never miss a customer's question again with real-time AI chat support.</p>
+            <p className="text-center">Never miss a customers question again with real-time AI chat support.</p>
           </div>
 
           {/* Feature 2 */}
