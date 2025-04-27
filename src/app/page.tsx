@@ -109,11 +109,11 @@ function Home() {
       {/* Floating Elements */}
       <FloatingElements />
 
-      {/* Theme Toggle */}
-      <ThemeToggle />
-
-      {/* Chatbot */}
-      <ChatbotBubble />
+      {/* Floating Action Buttons */}
+<div className="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-4">
+  <ThemeToggle />
+  <ChatbotBubble />
+</div>
 
       {/* Hero Section */}
       <section className="text-center max-w-2xl mt-20 space-y-8">
