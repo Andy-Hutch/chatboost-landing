@@ -6,19 +6,6 @@ import { Link as ScrollLink } from 'react-scroll';
 import ThemeToggle from '@/components/ThemeToggle';
 import ChatbotBubble from '@/components/ChatbotBubble';
 
-function LocalChatbotBubble() {
-  return (
-    <motion.div
-      className="fixed bottom-6 right-6 bg-blue-500 p-4 rounded-full shadow-xl cursor-pointer z-50"
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ type: 'spring', stiffness: 300 }}
-    >
-      <span className="text-white text-3xl">💬</span>
-    </motion.div>
-  );
-}
-
 function FloatingElements() {
   const [isMounted, setIsMounted] = useState(false);
 
