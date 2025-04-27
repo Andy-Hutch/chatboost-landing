@@ -19,9 +19,49 @@ function LocalChatbotBubble() {
   );
 }
 
+function FloatingElements() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true); // Ensure this runs only on the client side
+  }, []);
+
+  if (!isMounted) return null; // Prevent rendering on the server side
+
+  return (
+    <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden">
+      {[...Array(30)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-2 h-2 bg-white rounded-full opacity-10"
+          initial={{
+            y: '100%',
+            x: `${Math.random() * 100}%`,
+            scale: Math.random() * 0.5 + 0.5,
+          }}
+          animate={{
+            y: '-10%',
+            x: `${Math.random() * 100}%`,
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: Math.random() * 20 + 10,
+            ease: 'linear',
+            delay: Math.random() * 10,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 function Home() {
   const [selectedFeature, setSelectedFeature] = useState<null | string>(null);
   const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true); // Set client-side flag after mounting
+  }, []);
 
   const features = [
     {
@@ -54,6 +94,8 @@ function Home() {
     setSelectedFeature((prevSelectedFeature) => (prevSelectedFeature === id ? null : id));
   };
 
+  if (!isClient) return null; // Wait until the client side is ready
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-gradient-to-r from-blue-600 to-blue-900 text-white">
       {/* Background Animation */}
@@ -78,30 +120,7 @@ function Home() {
       </motion.div>
 
       {/* Floating Elements */}
-      <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden">
-        {isClient &&
-          [...Array(30)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-white rounded-full opacity-10"
-              initial={{
-                y: '100%',
-                x: `${Math.random() * 100}%`,
-                scale: Math.random() * 0.5 + 0.5,
-              }}
-              animate={{
-                y: '-10%',
-                x: `${Math.random() * 100}%`,
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: Math.random() * 20 + 10,
-                ease: 'linear',
-                delay: Math.random() * 10,
-              }}
-            />
-          ))}
-      </div>
+      <FloatingElements />
 
       {/* Theme Toggle */}
       <ThemeToggle />
@@ -239,6 +258,8 @@ function Home() {
   );
 }
 
-export default Home;  {/* Make sure you have the default export */}
+export default Home;
+
+
 
 
