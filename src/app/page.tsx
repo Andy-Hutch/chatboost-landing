@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link as ScrollLink } from 'react-scroll';
 import ThemeToggle from '@/components/ThemeToggle';
+import ChatbotBubble from '@/components/ChatbotBubble';
 
-export function ChatbotBubble() {
+function LocalChatbotBubble() {
   return (
     <motion.div
       className="fixed bottom-6 right-6 bg-blue-500 p-4 rounded-full shadow-xl cursor-pointer z-50"
@@ -104,6 +105,9 @@ function Home() {
 
       {/* Theme Toggle */}
       <ThemeToggle />
+
+      {/* Chatbot */}
+      <ChatbotBubble />
 
       {/* Hero Section */}
       <section className="text-center max-w-2xl mt-20 space-y-8">
